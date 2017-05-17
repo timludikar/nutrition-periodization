@@ -1,0 +1,17 @@
+<p>
+  calorie-calculator works!
+</p>
+<form>
+  <md-input-container>
+    <input #weight mdInput placeholder="Weight in lbs" (keyup)="updateWeight(weight.value)">
+  </md-input-container>
+  <md-slider #activity [min]="10" [max]="13" [step]="1" (input)="updateActivity(activity.value)"></md-slider>
+  <md-select [(ngModel)]="phaseSelected" name="phases" (change)="updatePhase()">
+    <md-option *ngFor="let phase of phases" [value]="phase.value">
+      {{phase.viewValue}}
+    </md-option>
+  </md-select>
+</form>
+<p>{{client.baseCalories}}</p>
+<p>{{client.activity}}</p>
+<p>{{calories}}</p>
