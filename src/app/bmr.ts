@@ -4,6 +4,14 @@ export class Bmr {
     public age: number;
     private _sex: string;
 
+    constructor(height: string, weight: number, age: number, sex: string){
+        let [feet, inches] = height.split("'");
+        this.weightInLbs(weight);
+        this.heightInFeet(parseInt(feet), parseInt(inches));
+        this.age = age;
+        this.sex = sex;
+    }
+
     private truncate(value: number): number {
         return Math.floor(value * 100) /100;
     }

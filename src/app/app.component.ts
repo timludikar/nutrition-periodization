@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Calories } from './calories';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Calculator';
+  title = 'Nutrition Schedule';
+  bmrChange: number = 0;
+  calories: Calories;
+
+  ngOnChange(val: number){
+    this.bmrChange = val;
+  }
+
+  caloriesUpdate(val: Calories){
+    this.calories = val;
+  }
 }

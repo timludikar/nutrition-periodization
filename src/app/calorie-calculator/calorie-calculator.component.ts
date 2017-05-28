@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Client } from '../client';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { Bmr } from '../bmr';
 
 @Component({
   selector: 'app-calorie-calculator',
@@ -8,40 +10,30 @@ import { Client } from '../client';
 })
 export class CalorieCalculatorComponent implements OnInit {
   constructor() { }
-  client: Client = new Client();
-  phaseSelected: string;
-  phases = [
-    {value: 'cut-weight', viewValue: 'Cut'},
-    {value: 'maintain-weight', viewValue: 'Maintain'},
-    {value: 'gain-weight', viewValue: 'Gain'}
-  ];
-  calories: number = 0;
+  title: string = "BMR";
+  bmr: Bmr;
 
-  ngOnInit() {}
+  sexSelector: string;
+  sexes = [
+    "Male",
+    "Female"
+  ]
 
-  updateWeight(value: number) {
-    this.client.weight = value;
-    this.client.update();
-  }
+  ngOnInit(){}
 
-  updateActivity(value: number) {
-    this.client.activity = value;
-    this.client.update();
-  }
+  @Output() bmrChange = new EventEmitter<number>();
 
-  updatePhase() {
-    switch(this.phaseSelected){
-      case 'cut-weight': 
-        this.calories = this.client.baseCalories - 500;
-        break;
-      case 'gain-weight':
-        this.calories = this.client.baseCalories + 500;
-        break;
-      default:
-        this.calories = this.client.baseCalories;
-    }
-    this.client.update();
-    
+  calculateBMR(form: NgForm) {
+    var result: number;
+    let sex = form.value.sex == "Male" ? "m" : "f";
+    this.bmr = new Bmr(
+      form.value.height,
+      form.value.weight,
+      form.value.age,
+      sex
+    );
+
+    this.bmrChange.emit(this.bmr.calculate);
   }
 
 }

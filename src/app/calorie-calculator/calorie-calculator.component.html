@@ -1,17 +1,20 @@
-<p>
-  calorie-calculator works!
-</p>
-<form>
-  <md-input-container>
-    <input #weight mdInput placeholder="Weight in lbs" (keyup)="updateWeight(weight.value)">
-  </md-input-container>
-  <md-slider #activity [min]="10" [max]="13" [step]="1" (input)="updateActivity(activity.value)"></md-slider>
-  <md-select [(ngModel)]="phaseSelected" name="phases" (change)="updatePhase()">
-    <md-option *ngFor="let phase of phases" [value]="phase.value">
-      {{phase.viewValue}}
-    </md-option>
-  </md-select>
-</form>
-<p>{{client.baseCalories}}</p>
-<p>{{client.activity}}</p>
-<p>{{calories}}</p>
+<md-card class="half-width">
+  <md-card-title>
+    {{title}}
+  </md-card-title>
+  <form #bmrForm="ngForm" (ngSubmit)="calculateBMR(bmrForm)">
+    <md-input-container class="quarter-width">
+      <input [(ngModel)]="height" name="height" mdInput placeholder="Height (in inches)">
+    </md-input-container>
+    <md-input-container class="quarter-width">
+      <input [(ngModel)]="weight" name="weight" mdInput type="number" placeholder="Weight (in Lbs)" value="250">
+    </md-input-container>
+    <md-input-container class="quarter-width">
+      <input mdInput [(ngModel)]="age" name="age" type="number" placeholder="Age" value="30">
+    </md-input-container>
+    <md-radio-group class="quarter-width" [(ngModel)]="sexSelector" name="sex">
+      <md-radio-button class="radio-button" *ngFor="let sex of sexes" [value]="sex" >{{sex}}</md-radio-button>
+    </md-radio-group>
+    <button type="submit" md-button>Submit</button>
+  </form>
+</md-card>

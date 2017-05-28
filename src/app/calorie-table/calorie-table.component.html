@@ -1,0 +1,13 @@
+<md-card class="half-width margin-top-1">
+  <md-select (change)="onChange($event.value)" [(ngModel)]="selectedPhase" name="weightPhase">
+    <md-option *ngFor="let phase of weightPhases" [value]="phase.value">
+      {{phase.name}}
+    </md-option>
+  </md-select>
+  <md-list>
+    <md-list-item>Non-training day: {{calories.base}}</md-list-item>
+    <md-list-item>Light training day: {{calories.light}}</md-list-item>
+    <md-list-item>Medium training day: {{calories.medium}}</md-list-item>
+    <md-list-item>Heavy training day: {{calories.heavy}}</md-list-item>
+  </md-list>
+</md-card>

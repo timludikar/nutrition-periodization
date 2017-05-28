@@ -1,6 +1,5 @@
-<section class="mw7 center">
 <h1>
   {{title}}
 </h1>
-<app-calorie-calculator></app-calorie-calculator>
-</section>
+<app-calorie-calculator (bmrChange)="ngOnChange($event)"></app-calorie-calculator>
+<app-calorie-table [bmr]="bmrChange" (caloriesUpdate)="caloriesUpdate($event)"></app-calorie-table>

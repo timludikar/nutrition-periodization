@@ -9,20 +9,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { CalorieCalculatorComponent } from './calorie-calculator/calorie-calculator.component';
 
-import { MdInputModule, MdSliderModule, MdSelectModule } from '@angular/material';
+import {  MdCardModule, 
+          MdInputModule,
+          MdRadioModule,
+          MdButtonModule,
+          MdSelectModule,
+          MdListModule } from '@angular/material';
+import { CalorieTableComponent } from './calorie-table/calorie-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalorieCalculatorComponent
+    CalorieCalculatorComponent,
+    CalorieTableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    MdCardModule,
     MdInputModule,
-    MdSliderModule,
+    MdRadioModule,
+    MdButtonModule,
+    MdListModule,
     MdSelectModule
   ],
   providers: [],
