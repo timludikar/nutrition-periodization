@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Calories } from './calories';
+
+import Nutrient from 'nutrient-timing-library';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,9 @@ import { Calories } from './calories';
 })
 export class AppComponent {
   title = 'Nutrition Schedule';
-  bmrChange: number = 0;
-  calories: Calories;
+  profile: Nutrient.Profile;
 
-  ngOnChange(val: number){
-    this.bmrChange = val;
-  }
-
-  caloriesUpdate(val: Calories){
-    this.calories = val;
+  onProfileUpdate($profile){
+    this.profile = $profile;
   }
 }

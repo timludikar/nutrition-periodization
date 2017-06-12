@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalorieTableComponent } from './calorie-table.component';
+import { ProfileFormComponent } from './profile-form.component';
 
-describe('CalorieTableComponent', () => {
-  let component: CalorieTableComponent;
-  let fixture: ComponentFixture<CalorieTableComponent>;
+describe('ProfileFormComponent', () => {
+  let component: ProfileFormComponent;
+  let fixture: ComponentFixture<ProfileFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalorieTableComponent ]
+      declarations: [ ProfileFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CalorieTableComponent);
+    fixture = TestBed.createComponent(ProfileFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

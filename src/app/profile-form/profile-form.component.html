@@ -1,0 +1,49 @@
+{{ diagnostic }}
+<div [hidden]="submitted">
+  <h1>Create Profile</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <input type="radio" [(ngModel)]="imperial" name="imperial" [value]="true"> Imperial<br>
+      <input type="radio" [(ngModel)]="imperial" name="metric" [value]="false"> Metric<br>
+    </div>
+    <div>
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" required 
+        [(ngModel)]="model.firstName" name="first">
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" required
+        [(ngModel)]="model.lastName" name="last">
+    </div>
+
+    <div>
+      <label for="age">Age</label>
+      <input type="number" id="age" required
+        [(ngModel)]="model.age" name="age">
+    </div>
+
+    <div *ngIf="imperial">
+      <label for="height">Height (Centimeters)</label>
+      <input type="number" id="height" name="height" [ngModel]="model.height | units: imperial: 'height'" required (blur)="addHeight($event.target.value)">
+    </div>
+
+    <div *ngIf="!imperial">
+      <label for="height">Height (Feet)</label>
+      <input type="number" id="height" required name="height" [ngModel]="model.height | units: imperial: 'height'" (blur)="addHeight($event.target.value)">
+    </div>
+
+    <div>
+      <label for="weight">Weight</label>
+      <input type="number" id="weight" required
+        [ngModel]="model.weight | units: imperial: 'weight'" (blur)="addWeight($event.target.value)" name="weight">
+    </div>
+    <div>
+      <label for="sex">Select Gender</label>
+      <select id="sex" required [(ngModel)]="model.sex" name="sex">
+        <option *ngFor="let sex of [{key: 'Male', value: 'm'}, {key: 'Female', value: 'f'}]" [value]="sex.value">{{sex.key}}</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>

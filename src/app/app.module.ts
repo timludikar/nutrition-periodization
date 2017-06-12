@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { CalorieCalculatorComponent } from './calorie-calculator/calorie-calculator.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
 
 import {  MdCardModule, 
           MdInputModule,
@@ -15,13 +15,13 @@ import {  MdCardModule,
           MdButtonModule,
           MdSelectModule,
           MdListModule } from '@angular/material';
-import { CalorieTableComponent } from './calorie-table/calorie-table.component';
+import { UnitsPipe } from './units.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalorieCalculatorComponent,
-    CalorieTableComponent
+    ProfileFormComponent,
+    UnitsPipe
   ],
   imports: [
     BrowserModule,
