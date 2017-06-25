@@ -1,0 +1,49 @@
+@import '~basscss/css/basscss.css';
+@import '~basscss-btn/css/btn.css';
+@import '~basscss-btn-primary/css/btn-primary.css';
+@import '~basscss-forms/index.css';
+
+fieldset {
+    border: none;
+}
+
+#standard {
+    list-style: none;
+}
+.flex-outer li,
+.flex-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+ 
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+ 
+.flex-outer > li > label + *,
+.flex-inner {
+    flex: 1 0 220px;
+}
+
+.flex-inner {
+    justify-content: flex-end;
+    /*justify-content: space-between;*/
+}
+.flex-inner li {
+    width: 100px;
+    display: inline-flex;
+}

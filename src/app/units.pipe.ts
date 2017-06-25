@@ -6,6 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class UnitsPipe implements PipeTransform {
 
   transform(value: any, imperial: Boolean = false, measurement?: string): any {
+    if(value === 0) return null;
     switch(measurement){
       case "height":
         return imperial ? value * 2.54 : value;
