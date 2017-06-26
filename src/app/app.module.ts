@@ -16,6 +16,7 @@ import {  MdCardModule,
           MdSelectModule,
           MdListModule } from '@angular/material';
 import { UnitsPipe } from './units.pipe';
+import { ProfileService } from './profile.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { UnitsPipe } from './units.pipe';
     MdListModule,
     MdSelectModule
   ],
-  providers: [],
+  providers: [
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

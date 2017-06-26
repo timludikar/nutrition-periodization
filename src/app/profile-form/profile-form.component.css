@@ -1,7 +1,10 @@
-@import '~basscss/css/basscss.css';
-@import '~basscss-btn/css/btn.css';
-@import '~basscss-btn-primary/css/btn-primary.css';
 @import '~basscss-forms/index.css';
+
+input, select {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 fieldset {
     border: none;

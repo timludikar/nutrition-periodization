@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProfileService } from './profile.service';
 
 import Nutrient from 'nutrient-timing-library';
 
@@ -9,9 +10,10 @@ import Nutrient from 'nutrient-timing-library';
 })
 export class AppComponent {
   title = 'Nutrition Schedule';
-  profile: Nutrient.Profile;
 
-  onProfileUpdate($profile){
-    this.profile = $profile;
+  constructor(private profileService: ProfileService){}
+
+  onProfileUpdate($event){
+    this.profileService.updateProfile($event);
   }
 }
