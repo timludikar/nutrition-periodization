@@ -9,7 +9,7 @@ import { ProfileService } from '../profile.service';
 })
 export class ProfileFormComponent implements OnInit {
   submitted = false;
-  imperial = false;
+  imperial = true;
   profile: Profile;
 
   @Output() result: EventEmitter<Profile> = new EventEmitter();
@@ -27,13 +27,11 @@ export class ProfileFormComponent implements OnInit {
   get diagnostic() { return JSON.stringify(this.profile); }
 
   addHeight(val: number){
-    if(this.imperial) this.profile.height = +(val / 2.54);
-    else this.profile.height = +(val);
+    this.profile.height = +(val);
   }
 
   addWeight(val: number){
-    if(this.imperial) this.profile.weight = +(val / 2.2);
-    else this.profile.weight = +(val);
+    this.profile.weight = +(val);
   }
 
 }

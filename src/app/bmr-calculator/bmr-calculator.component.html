@@ -1,0 +1,26 @@
+{{ diagnostic }}
+<div class="overflow-hidden border rounded max-width-2">
+  <div class="p2 bold white bg-blue center">Calories</div>
+  <table class="table">
+    <tr>
+      <th>Base</th>
+      <th>Light</th>
+      <th>Medium</th>
+      <th>Heavy</th>
+    </tr>
+    <tr>
+      <td class="table-cell p2">{{calories.base | truncate}}</td>
+      <td class="table-cell p2">{{calories.light | truncate}}</td>
+      <td class="table-cell p2">{{calories.medium | truncate}}</td>
+      <td class="table-cell p2">{{calories.heavy | truncate}}</td>
+    </tr>
+  </table>
+  <fieldset id="standard" class="m0 p0">
+    <ul class="flex-inner">
+      <li *ngFor="let phase of phases; let id = index;">
+        <label for="phase.key">{{ phase.key }}</label>
+        <input type="radio" [value]="phase.value" (change)="onSelectionChange(phase)" name="weightphase" [checked]="phase.key === selectedPhase.key">
+      </li>
+    </ul>
+  </fieldset>
+</div>

@@ -17,12 +17,16 @@ import {  MdCardModule,
           MdListModule } from '@angular/material';
 import { UnitsPipe } from './units.pipe';
 import { ProfileService } from './profile.service';
+import { BmrCalculatorComponent } from './bmr-calculator/bmr-calculator.component';
+import { TruncatePipe } from './truncate.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileFormComponent,
-    UnitsPipe
+    UnitsPipe,
+    BmrCalculatorComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
