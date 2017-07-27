@@ -1,7 +1,10 @@
 <h1>
   {{title}}
 </h1>
+<nav>
+    <a routerLink="/profile" routerLinkActive="active">Profile</a>
+    <a routerLink="/calories" routerLinkActive="active">BMR</a>
+  </nav>
 <div class="flex flex-row">
-  <app-profile-form (result)="onProfileUpdate($event)"></app-profile-form>
-  <app-bmr-calculator class="ml2"></app-bmr-calculator>
+  <router-outlet></router-outlet>
 </div>
