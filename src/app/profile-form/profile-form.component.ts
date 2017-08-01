@@ -12,8 +12,6 @@ export class ProfileFormComponent implements OnInit {
   imperial = true;
   profile: Profile;
 
-  @Output() result: EventEmitter<Profile> = new EventEmitter();
-
   constructor(private profileService: ProfileService){}
 
   ngOnInit(){
@@ -22,7 +20,7 @@ export class ProfileFormComponent implements OnInit {
     });
   }
 
-  onSubmit() { this.submitted = true; this.result.emit(this.profile); }
+  onSubmit() { this.submitted = true; this.profileService.updateProfile(this.profile); }
 
   get diagnostic() { return JSON.stringify(this.profile); }
 

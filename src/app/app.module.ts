@@ -10,20 +10,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 
-import {  MdCardModule, 
-          MdInputModule,
-          MdRadioModule,
-          MdButtonModule,
-          MdSelectModule,
-          MdListModule } from '@angular/material';
 import { UnitsPipe } from './units.pipe';
 import { ProfileService } from './profile.service';
+import { CaloriesService } from './calories.service';
 import { BmrCalculatorComponent } from './bmr-calculator/bmr-calculator.component';
 import { TruncatePipe } from './truncate.pipe';
+import { TimingTableComponent } from './timing-table/timing-table.component';
 
 const appRoutes: Routes = [
   { path: 'profile', component: ProfileFormComponent },
-  { path: 'calories', component: BmrCalculatorComponent }
+  { path: 'calories', component: BmrCalculatorComponent },
+  { path: 'timing', component: TimingTableComponent }
 ];
 
 @NgModule({
@@ -32,26 +29,22 @@ const appRoutes: Routes = [
     ProfileFormComponent,
     UnitsPipe,
     BmrCalculatorComponent,
-    TruncatePipe
+    TruncatePipe,
+    TimingTableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdCardModule,
-    MdInputModule,
-    MdRadioModule,
-    MdButtonModule,
-    MdListModule,
-    MdSelectModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
     ) 
   ],
   providers: [
-    ProfileService
+    ProfileService,
+    CaloriesService
   ],
   bootstrap: [AppComponent]
 })

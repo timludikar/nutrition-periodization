@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
+import { CaloriesService } from '../calories.service';
 import { Models, Services } from 'nutrient-timing-library';
 
 
@@ -15,12 +16,16 @@ export class BmrCalculatorComponent implements OnInit {
   phases = [{ key: 'lose', value: -500 }, { key: 'maintain', value: 0 }, { key:'gain', value: 500 }];
   selectedPhase = { key: 'maintain', value: 0 };
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private caloriesService: CaloriesService) { }
 
   ngOnInit() {
     this.profileService.getChanges().subscribe(newProfile => {
       this.BMR = Services.bmr.calculate(newProfile);
-      this.calories = this.calories.calculate(this.BMR).adjustment(this.selectedPhase.value);
+      this.caloriesService.create(this.BMR);
+    });
+
+    this.caloriesService.getChanges().subscribe(newCalories => {
+      this.calories = newCalories;
     });
   }
 
@@ -28,6 +33,6 @@ export class BmrCalculatorComponent implements OnInit {
 
   onSelectionChange(val: Object){
     this.selectedPhase = Object.assign({}, this.selectedPhase, val);
-    this.calories.calculate(this.BMR).adjustment(this.selectedPhase.value);
+    this.caloriesService.adjust(this.selectedPhase.value);
   }
 }
